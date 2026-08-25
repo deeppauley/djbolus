@@ -1,6 +1,6 @@
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-const heroVideo = document.querySelector('.hero-audio-source');
+const heroVideo = document.querySelector('.hero-video');
 const soundToggle = document.querySelector('.hero-sound');
 let soundEnabled = false;
 
