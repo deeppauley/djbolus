@@ -48,19 +48,40 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 const bookingForm = document.querySelector('#bolus-booking-form');
-bookingForm?.addEventListener('submit', (event) => {
+bookingForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const data = new FormData(bookingForm);
-  const value = (name) => String(data.get(name) || '').trim();
-  const subject = `DJ Bolus booking inquiry${value('event') ? ` — ${value('event')}` : ''}`;
-  const body = [
-    'DJ BOLUS BOOKING INQUIRY', '',
-    `Name: ${value('name')}`,
-    `Contact: ${value('contact')}`,
-    `Event date: ${value('date') || 'Not specified'}`,
-    `Location: ${value('location') || 'Not specified'}`,
-    `Event type: ${value('event') || 'Not specified'}`,
-    '', 'Details:', value('details')
-  ].join('\n');
-  window.location.href = `mailto:pauleyc@gmail.com,chriscbolus@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const button = bookingForm.querySelector('button[type="submit"]');
+  const status = bookingForm.querySelector('.form-status');
+  const data = Object.fromEntries(new FormData(bookingForm));
+  button.disabled = true;
+  button.firstChild.textContent = 'SENDING… ';
+  status.textContent = '';
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/pauleyc@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || 'Not provided',
+        'event date': data.date || 'Not specified',
+        location: data.location || 'Not specified',
+        'event type': data.event || 'Not specified',
+        details: data.details,
+        _subject: `New DJ Bolus booking inquiry — ${data.name}`,
+        _cc: 'chriscbolus@gmail.com',
+        _template: 'table',
+        _honey: data._honey
+      })
+    });
+    if (!response.ok) throw new Error('Submission failed');
+    bookingForm.reset();
+    status.textContent = 'Booking request sent. We will be in touch.';
+  } catch {
+    status.textContent = 'Something went wrong. Please try again in a moment.';
+  } finally {
+    button.disabled = false;
+    button.firstChild.textContent = 'SEND BOOKING REQUEST ';
+  }
 });

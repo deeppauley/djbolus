@@ -93,19 +93,22 @@
         <p>Tell us about the room, the date, and the atmosphere you want to create.</p>
       </div>
       <form class="booking-form" id="bolus-booking-form">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label><span>Name</span><input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
-        <label><span>Contact</span><input name="contact" type="text" required placeholder="Email or phone"></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="Email address"></label>
+        <label><span>Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Phone number (optional)"></label>
         <label><span>Event date</span><input name="date" type="date"></label>
         <label><span>Location</span><input name="location" type="text" placeholder="Venue or city"></label>
         <label><span>Event</span><input name="event" type="text" placeholder="Club, private event, rooftop..."></label>
         <label><span>Details</span><textarea name="details" rows="5" required placeholder="Audience, timing, sound, and anything else we should know"></textarea></label>
         <button type="submit">SEND BOOKING REQUEST <span>↗</span></button>
-        <p class="booking-note mono">OPENS YOUR EMAIL APP · SENDS TO PAULY CEE + DJ BOLUS</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <p class="booking-note mono">DELIVERED TO PAULY CEE + DJ BOLUS</p>
       </form>
     </section>
   </main>
 
   <footer><a class="mark" href="#top"><span>B</span><i></i></a><p class="mono">DJ BOLUS / K SPACE</p><p class="mono">© <span id="year"></span></p></footer>
-  <script src="script.js?v=20260825-1"></script>
+  <script src="script.js?v=20260825-2"></script>
 </body>
 </html>
