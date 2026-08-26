@@ -46,3 +46,21 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (!frame) { requestAnimationFrame(update); frame = true; }
   }, { passive: true });
 }
+
+const bookingForm = document.querySelector('#bolus-booking-form');
+bookingForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(bookingForm);
+  const value = (name) => String(data.get(name) || '').trim();
+  const subject = `DJ Bolus booking inquiry${value('event') ? ` — ${value('event')}` : ''}`;
+  const body = [
+    'DJ BOLUS BOOKING INQUIRY', '',
+    `Name: ${value('name')}`,
+    `Contact: ${value('contact')}`,
+    `Event date: ${value('date') || 'Not specified'}`,
+    `Location: ${value('location') || 'Not specified'}`,
+    `Event type: ${value('event') || 'Not specified'}`,
+    '', 'Details:', value('details')
+  ].join('\n');
+  window.location.href = `mailto:pauleyc@gmail.com,chriscbolus@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
