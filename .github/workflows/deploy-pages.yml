@@ -1,4 +1,4 @@
-name: Deploy DJ Bolus website
+name: Deploy Trillium website
 
 on:
   push:

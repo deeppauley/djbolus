@@ -47,7 +47,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, { passive: true });
 }
 
-const bookingForm = document.querySelector('#bolus-booking-form');
+const bookingForm = document.querySelector('#trillium-booking-form');
 bookingForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const button = bookingForm.querySelector('button[type="submit"]');
@@ -69,7 +69,7 @@ bookingForm?.addEventListener('submit', async (event) => {
         location: data.location || 'Not specified',
         'event type': data.event || 'Not specified',
         details: data.details,
-        _subject: `New DJ Bolus booking inquiry — ${data.name}`,
+        _subject: `New Trillium booking inquiry — ${data.name}`,
         _cc: 'chriscbolus@gmail.com',
         _template: 'table',
         _honey: data._honey
