@@ -12,6 +12,7 @@
 .slider-film-frame{position:absolute;z-index:1;inset:6%;border:1px solid var(--line);pointer-events:none}
 .manifesto .columns{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1200px;gap:3vw}
 .k-description p{line-height:1.8;color:#a2afb4;max-width:530px;margin:0}
+.k-description p+p{margin-top:22px}.kspace .k-copy{margin-block:48px;align-items:start}
 .k-description a{display:inline-flex;align-items:center;gap:42px;margin-top:28px;padding:14px 16px;border:1px solid #9bc7cf66;color:var(--silver);font:500 10px var(--mono);letter-spacing:.1em;transition:.25s ease}
 .k-description a:hover{background:var(--amber);border-color:var(--amber);color:var(--void)}
 .contact{display:grid;grid-template-columns:minmax(0,.85fr) minmax(420px,1.15fr);gap:8vw;align-items:start}
