@@ -11,6 +11,6 @@ Namecheap Advanced DNS: four A records for @ pointing to 185.199.108.153,
 185.199.109.153, 185.199.110.153, 185.199.111.153; CNAME www points to
 deeppauley.github.io. Remove conflicting parking/URL redirects, not email records.
 
-SoundCloud and Resident Advisor keep their real existing URLs until their accounts
-are renamed. Existing asset filenames are preserved. Booking stays FormSubmit,
+SoundCloud links and the embedded player use https://soundcloud.com/trilliumdj.
+Resident Advisor links have been removed. Existing asset filenames are preserved. Booking stays FormSubmit,
 sent to pauleyc@gmail.com with chriscbolus@gmail.com CC.
